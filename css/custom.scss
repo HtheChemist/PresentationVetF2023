@@ -1,0 +1,110 @@
+/**
+ * Solarized Dark theme for reveal.js.
+ * Author: Achim Staebler
+ */
+
+// Default mixins and settings -----------------
+@import "reveal.js/css/theme/template/mixins";
+@import "reveal.js/css/theme/template/settings";
+// ---------------------------------------------
+
+// Include theme-specific fonts
+@import url(reveal.js/dist/theme/fonts/league-gothic/league-gothic.css);
+@import url(https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic);
+
+/**
+ * Solarized colors by Ethan Schoonover
+ */
+html * {
+  color-profile: sRGB;
+  rendering-intent: auto;
+}
+
+// Solarized colors
+$base03: #002b36;
+$base02: #073642;
+$base01: #586e75;
+$base00: #657b83;
+$base0: #839496;
+$base1: #93a1a1;
+$base2: #eee8d5;
+$base3: #fdf6e3;
+$yellow: #b58900;
+$orange: #cb4b16;
+$red: #dc322f;
+$magenta: #d33682;
+$violet: #6c71c4;
+$blue: #268bd2;
+$cyan: #2aa198;
+$green: #859900;
+
+// Override theme settings (see ../template/settings.scss)
+$mainColor: $base1;
+$headingColor: $base2;
+$headingTextShadow: none;
+$backgroundColor: $base03;
+$linkColor: $blue;
+$linkColorHover: lighten($linkColor, 20%);
+$selectionBackgroundColor: $magenta;
+
+// Change text colors against light slide backgrounds
+@include light-bg-text-color(#222);
+
+.multiCol {
+  display: table;
+  table-layout: fixed; // don't fudge depending on content
+  width: 100%;
+  text-align: left; // matter of taste, makes imho sense
+  .col {
+    display: table-cell;
+    vertical-align: middle;
+    text-align: center;
+    width: 50%;
+    padding: 2% 0 2% 50px; // some vertical, and between columns
+    &:first-of-type {
+      padding-left: 0;
+    }
+
+    // there's nothing before col1
+  }
+}
+
+.zoom-animate {
+  animation: zoom-in-zoom-out 1s ease 1;
+}
+
+@keyframes zoom-in-zoom-out {
+  0% {
+    position: relative;
+    transform: scale(1, 1);
+    z-index: 999;
+  }
+  50% {
+    position: relative;
+    transform: scale(1.5, 1.5);
+    z-index: 999;
+  }
+  100% {
+    position: relative;
+    transform: scale(1, 1);
+    z-index: 999;
+  }
+}
+
+.backgrounds {
+  opacity: 50%;
+}
+
+// add a rounded frame around the image
+.rounded-frame {
+  border: 5px solid #dad3d3;
+  border-radius: 30px;
+  padding: 10px;
+  background: #ffffff;
+  box-shadow: 10px 10px 5px #888888;
+  scale: 80%;
+}
+
+// Theme template ------------------------------
+@import "reveal.js/css/theme/template/theme";
+// ---------------------------------------------
